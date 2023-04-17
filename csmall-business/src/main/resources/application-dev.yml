@@ -1,0 +1,8 @@
+spring:
+  application:
+    #设置当前项目的名称，这个名字会提交给Nacos做当前微服务项目的名称
+    name: nacos-business
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

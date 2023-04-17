@@ -28,6 +28,14 @@
             <artifactId>csmall-commons</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--支持当前项目注册到Nacos注册中心的依赖
+            discovery:发现
+            (当前项目注册后，微服务系统中，就能发现该项目)
+        -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
     </dependencies>
 
 
