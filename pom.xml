@@ -22,6 +22,7 @@
     <modules>
         <module>csmall-stock</module>
         <module>csmall-commons</module>
+        <module>csmall-business</module>
     </modules>
     <!--properties标签-->
     <properties>
