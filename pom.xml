@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.9</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>cn.tedu</groupId>
+    <artifactId>csmall</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>csmall</name>
+    <description>FuckFuckFuckFuck</description>
+
+    <!--当前项目要成为父项目，必须作为一个pom文件，给子项目继承
+        这个父子项目继承的功能是maven提供的
+    -->
+    <packaging>pom</packaging>
+    <!-- 声明当前父项目包含哪些子项目模块，module就是模块的意思 -->
+    <modules>
+        <module>csmall-stock</module>
+    </modules>
+
+</project>
