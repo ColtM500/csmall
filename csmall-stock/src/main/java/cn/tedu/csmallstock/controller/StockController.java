@@ -20,10 +20,10 @@ public class StockController {
     @Autowired
     private IReduceStockService service;
 
-    @PostMapping("/update")
+    @PostMapping("/reduce/count")
     @ApiOperation("更新商品库存数量")
     public JsonResult reduceStockCount(StockReduceCountDTO stockReduceCountDTO){
          service.reduceStock(stockReduceCountDTO);
-         return JsonResult.ok("更新商品库存数量完成!");
+         return JsonResult.ok("减少商品库存数量完成!");
     }
 }
