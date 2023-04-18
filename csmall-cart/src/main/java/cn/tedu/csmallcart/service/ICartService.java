@@ -1,6 +1,8 @@
 package cn.tedu.csmallcart.service;
 
 import cn.tedu.csmall.commons.pojo.cart.dto.CartAddDTO;
+import org.springframework.stereotype.Repository;
+
 
 public interface ICartService {
 

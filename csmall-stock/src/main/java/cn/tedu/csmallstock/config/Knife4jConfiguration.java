@@ -1,4 +1,4 @@
-package cn.tedu.csmall.order.config;
+package cn.tedu.csmallstock.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class Knife4jConfiguration {
     /**
      * 【重要】指定Controller包路径
      */
-    private String basePackage = "cn.tedu.csmall.order.controller";
+    private String basePackage = "cn.tedu.csmallstock.controller";
     /**
      * 分组名称
      */
@@ -61,7 +61,7 @@ public class Knife4jConfiguration {
      */
     private String version = "1.0-SNAPSHOT";
 
-    @Autowired
+    @Autowired(required = false)
     private OpenApiExtensionResolver openApiExtensionResolver;
 
     @Bean
