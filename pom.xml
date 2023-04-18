@@ -23,6 +23,7 @@
         <module>csmall-stock</module>
         <module>csmall-commons</module>
         <module>csmall-business</module>
+        <module>csmall-cart</module>
     </modules>
     <!--properties标签-->
     <properties>
