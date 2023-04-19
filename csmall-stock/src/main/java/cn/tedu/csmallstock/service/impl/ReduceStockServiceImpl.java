@@ -4,14 +4,14 @@ import cn.tedu.csmall.commons.exception.CoolSharkServiceException;
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
 import cn.tedu.csmall.commons.restful.ResponseCode;
 import cn.tedu.csmallstock.mapper.StockMapper;
-import cn.tedu.csmallstock.service.IReduceStockService;
+import cn.tedu.csmallstock.service.IStockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ReduceStockServiceImpl implements IReduceStockService {
+public class ReduceStockServiceImpl implements IStockService {
 
     @Autowired
     private StockMapper stockMapper;

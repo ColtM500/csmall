@@ -2,7 +2,7 @@ package cn.tedu.csmallstock.controller;
 
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
 import cn.tedu.csmall.commons.restful.JsonResult;
-import cn.tedu.csmallstock.service.IReduceStockService;
+import cn.tedu.csmallstock.service.IStockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StockController {
 
     @Autowired
-    private IReduceStockService service;
+    private IStockService service;
 
     @PostMapping("/reduce/count")
     @ApiOperation("更新商品库存数量")

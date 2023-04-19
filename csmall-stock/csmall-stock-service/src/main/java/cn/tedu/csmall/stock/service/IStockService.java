@@ -1,10 +1,9 @@
-package cn.tedu.csmallstock.service;
+package cn.tedu.csmall.stock.service;
 
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
-import org.springframework.stereotype.Repository;
 
 
-public interface IReduceStockService {
+public interface IStockService {
 
     void reduceStock(StockReduceCountDTO stockReduceCountDTO);
 }
