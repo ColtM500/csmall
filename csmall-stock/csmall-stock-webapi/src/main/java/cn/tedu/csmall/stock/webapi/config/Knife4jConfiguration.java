@@ -1,4 +1,4 @@
-package com.example.csmallstockwebapi.config;
+package cn.tedu.csmall.stock.webapi.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,11 @@ public class Knife4jConfiguration {
     /**
      * 【重要】指定Controller包路径
      */
-    private String basePackage = "ccom.example.csmallstockwebapi.controller";
+    private String basePackage = "cn.tedu.csmall.stock.webapi.controller";
     /**
      * 分组名称
      */
-    private String groupName = "base-cart";
+    private String groupName = "base-stock";
     /**
      * 主机名
      */
@@ -35,11 +35,11 @@ public class Knife4jConfiguration {
     /**
      * 标题
      */
-    private String title = "酷鲨商城项目案例在线API文档--基础cart-web实例";
+    private String title = "酷鲨商城项目案例在线API文档--基础stock-web实例";
     /**
      * 简介
      */
-    private String description = "构建基础cart-web项目,实现购买";
+    private String description = "构建基础stock-web项目,实现购买";
     /**
      * 服务条款URL
      */

@@ -1,4 +1,4 @@
-package com.example.csmallstockwebapi.controller;
+package cn.tedu.csmall.stock.webapi.controller;
 
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
 import cn.tedu.csmall.commons.restful.JsonResult;

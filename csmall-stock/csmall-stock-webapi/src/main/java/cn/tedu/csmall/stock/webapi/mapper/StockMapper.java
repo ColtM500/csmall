@@ -1,4 +1,4 @@
-package com.example.csmallstockwebapi.mapper;
+package cn.tedu.csmall.stock.webapi.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;

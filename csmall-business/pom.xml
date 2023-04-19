@@ -36,6 +36,16 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
+        </dependency>
+        <!--business模块是要消费order模块的，所以要添加order模块业务逻辑层接口的依赖-->
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>csmall-order-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

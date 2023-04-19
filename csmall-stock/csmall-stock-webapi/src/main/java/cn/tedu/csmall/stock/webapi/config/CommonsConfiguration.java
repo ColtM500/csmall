@@ -1,4 +1,4 @@
-package com.example.csmallstockwebapi.config;
+package cn.tedu.csmall.stock.webapi.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
