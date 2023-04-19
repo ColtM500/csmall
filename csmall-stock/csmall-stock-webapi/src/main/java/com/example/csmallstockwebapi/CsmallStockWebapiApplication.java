@@ -1,13 +1,13 @@
-package cn.tedu.csmallstock;
+package com.example.csmallstockwebapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CsmallStockApplication {
+public class CsmallStockWebapiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CsmallStockApplication.class, args);
+        SpringApplication.run(CsmallStockWebapiApplication.class, args);
     }
 
 }

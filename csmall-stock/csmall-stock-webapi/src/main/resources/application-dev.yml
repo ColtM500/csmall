@@ -1,0 +1,27 @@
+spring:
+  application:
+    #设置当前项目的名称，这个名字会提交给Nacos做当前微服务项目的名称
+    name: nacos-stock
+  cloud:
+    nacos:
+      discovery:
+        #配置Nacos的位置 用于提交当前的信息
+        server-addr: localhost:8848
+  datasource:
+    url: jdbc:mysql://localhost:3306/csmall_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: root
+dubbo:
+  protocol: #协议
+    # port设置为1 表示启用dubbo自动寻找可用端口号的功能
+    # 默认寻找可用端口的规则为 从20880开始，可用就使用，不可用就+1，直到找到可用的位置
+    port: -1
+    # 设置连接名称，Dubbo框架要求设置为dubbo
+    name: dubbo
+  registry:  #注册
+    # 指定当前项目服务注册到哪个注册中心
+    address: nacos://localhost:8848
+  consumer:
+    # 设置当前项目启动时，是否检查本项目需要的所有远程服务都已经启动
+    # 设置它的值为false，表示不检查，这样就不会因为需要的服务没有启动而报错
+    check: false

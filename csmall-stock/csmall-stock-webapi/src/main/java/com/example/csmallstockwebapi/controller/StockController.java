@@ -1,8 +1,8 @@
-package cn.tedu.csmallstock.controller;
+package com.example.csmallstockwebapi.controller;
 
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
 import cn.tedu.csmall.commons.restful.JsonResult;
-import cn.tedu.csmallstock.service.IStockService;
+import cn.tedu.csmall.stock.service.IStockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
