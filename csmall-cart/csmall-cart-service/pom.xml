@@ -4,20 +4,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.tedu</groupId>
-        <artifactId>csmall</artifactId>
+        <artifactId>csmall-cart</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.tedu</groupId>
-    <artifactId>csmall-cart</artifactId>
+    <artifactId>csmall-cart-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>csmall-cart</name>
+    <name>csmall-cart-service</name>
     <description>Demo project for Spring Boot</description>
-    <packaging>pom</packaging>
-    <modules>
-        <module>csmall-cart-service</module>
-        <module>csmall-cart-webapi</module>
-    </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>csmall-commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
