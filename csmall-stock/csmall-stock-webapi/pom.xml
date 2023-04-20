@@ -64,6 +64,27 @@
             <artifactId>csmall-stock-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--   Seata和SpringBoot整合依赖     -->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+        </dependency>
+        <!--  Seata 完成分布式事务的两个相关依赖(Seata会自动使用其中的资源)  -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <!-- Sentinel 依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <version>2021.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>

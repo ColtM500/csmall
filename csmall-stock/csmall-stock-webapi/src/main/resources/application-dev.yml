@@ -3,6 +3,13 @@ spring:
     #设置当前项目的名称，这个名字会提交给Nacos做当前微服务项目的名称
     name: nacos-stock
   cloud:
+    sentinel:
+      transport:
+        # 配置Sentinel提供的数据仪表台的位置
+        dashboard: localhost:8080
+        # 上面仪表台只是数据展示，真要执行限流需要另外的端口
+        # 下面就是这个限流的端口，这个端口号和本地其他模块不能冲突（例如cart模块在设置可以使用8720）
+        port: 8719
     nacos:
       discovery:
         #配置Nacos的位置 用于提交当前的信息
