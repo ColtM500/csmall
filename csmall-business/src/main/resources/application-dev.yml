@@ -15,3 +15,10 @@ dubbo:
     address: nacos://localhost:8848
   consumer:
     check: false
+seata:
+  tx-service-group: csmall_group
+  service:
+    vgroup-mapping:
+      csmall_group: default
+    grouplist:
+      default: localhost:8091

@@ -19,3 +19,13 @@ dubbo:
     address: nacos://localhost:8848
   consumer:
     check: false
+seata:
+  # 定义一个事务的分组名称， 同一个微服务项目的各个模块名称应该一致， 这个名称就是用来区分不同项目的，
+  tx-service-group: csmall_group
+  service:
+    vgroup-mapping:
+      # 设置csmall_group分组使用的事务策略，default表示使用默认策略配置
+      csmall_group: default
+    grouplist:
+      # 设置seata的ip地址和端口号
+      default: localhost:8091

@@ -25,3 +25,13 @@ dubbo:
     # 设置当前项目启动时,是否检查本项目需要的所有远程服务都已经启动
     # 设置它的值为false,表示不检查,这样就不会因为需要的服务没有启动而报错了
     check: false
+seata:
+  # 定义一个事务的分组名称， 同一个微服务项目的各个模块名称应该一致， 这个名称就是用来区分不同项目的，
+  tx-service-group: csmall_group
+  service:
+    vgroup-mapping:
+      # 设置csmall_group分组使用的事务策略，default表示使用默认策略配置
+      csmall_group: default
+    grouplist:
+      # 设置seata的ip地址和端口号
+      default: localhost:8091
