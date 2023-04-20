@@ -31,8 +31,11 @@ public class StockController {
     //如果这个方法不运行，就不会在仪表台中显示，也无法设置限流
     //“减少库存数的方法” 这个配置会在仪表台中代表这个方法显示出来
     //blockHandler属性是设置在当前方法被限流时，运行的自定义限流方法名称
+    //fallback属性是设置在当前方法运行发生异常时，运行的自定义降级方法名称
+    //fallback指定的降级方法运行优先级比全局异常处理类高
     @SentinelResource(value = "减少商品库存数量",
-                      blockHandler = "blockError")
+                      blockHandler = "blockError",
+                      fallback = "fallbackError")
     public JsonResult reduceStockCount(StockReduceCountDTO stockReduceCountDTO){
          service.reduceStock(stockReduceCountDTO);
 //        try {
@@ -54,5 +57,16 @@ public class StockController {
         return JsonResult.failed(
                 ResponseCode.INTERNAL_SERVER_ERROR, "服务器忙，请稍后再试！"
         );
+    }
+
+    //自定义降级方法的格式和上面限流方法基本一致
+    //区别是参数列表末尾添加的异常类型Throwable
+    public JsonResult fallbackError(StockReduceCountDTO stockReduceCountDTO,
+                                    Throwable throwable){
+        //先输出异常的信息
+        throwable.printStackTrace();
+        //返回JsonResult对象
+        return JsonResult.failed(ResponseCode.INTERNAL_SERVER_ERROR,
+                "方法运行发生异常，执行了降级方法"+throwable.getMessage());
     }
 }
