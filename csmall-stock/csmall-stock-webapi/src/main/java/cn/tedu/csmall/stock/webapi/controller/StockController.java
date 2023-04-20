@@ -2,8 +2,10 @@ package cn.tedu.csmall.stock.webapi.controller;
 
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
 import cn.tedu.csmall.commons.restful.JsonResult;
+import cn.tedu.csmall.commons.restful.ResponseCode;
 import cn.tedu.csmall.stock.service.IStockService;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +30,29 @@ public class StockController {
     //会在Sentinel仪表台中显示，显示后可以设置这个方法的限流策略
     //如果这个方法不运行，就不会在仪表台中显示，也无法设置限流
     //“减少库存数的方法” 这个配置会在仪表台中代表这个方法显示出来
-    @SentinelResource("更新商品库存数量")
+    //blockHandler属性是设置在当前方法被限流时，运行的自定义限流方法名称
+    @SentinelResource(value = "减少商品库存数量",
+                      blockHandler = "blockError")
     public JsonResult reduceStockCount(StockReduceCountDTO stockReduceCountDTO){
          service.reduceStock(stockReduceCountDTO);
-         return JsonResult.ok("减少商品库存数量完成!");
+//        try {
+//            Thread.sleep(5000);//5s
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return JsonResult.ok("减少商品库存数量完成!");
+    }
+
+    //Sentinel自定义限流方法规则
+    //1.访问修饰符必须为public
+    //2.返回值类型必须和被限流的控制方法一致
+    //3.方法名称必须和@SentinelResource注解中blockHandler设置的名称一致
+    //4.参数列表也是和控制器方法一致,在末尾额外添加一个BlockException类型的参数
+    public JsonResult blockError(StockReduceCountDTO stockReduceCountDTO,
+                                 BlockException e){
+        //这个方法会在请求被限流时执行，返回值应包含相应的提示信息
+        return JsonResult.failed(
+                ResponseCode.INTERNAL_SERVER_ERROR, "服务器忙，请稍后再试！"
+        );
     }
 }
