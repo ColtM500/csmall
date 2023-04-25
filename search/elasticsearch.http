@@ -112,3 +112,26 @@ Content-Type: application/json
     }
   }
 }
+
+### 单条件搜索
+POST http://localhost:9200/items/_search
+Content-Type: application/json
+
+{
+  "query": {"match": { "title":  "游戏" }}
+}
+
+### 多字段搜索
+POST http://localhost:9200/items/_search
+Content-Type: application/json
+
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "title": "游戏"}},
+        { "match": { "brand": "罗技"}}
+      ]
+    }
+  }
+}

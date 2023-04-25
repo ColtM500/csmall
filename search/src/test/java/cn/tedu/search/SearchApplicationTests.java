@@ -63,5 +63,32 @@ class SearchApplicationTests {
         System.out.println("ok");
     }
 
+    // 全查
+    @Test
+    void getAll(){
+        // findAll就是SpringData提供的从指定索引中全查所有数据的方法
+        Iterable<Item> items = itemRespository.findAll();
+        //List<Item> items = (List<Item>) itemRepository.findAll();
+        for(Item item : items){
+            System.out.println(item);
+        }
+        System.out.println("-------------------------------------------");
+        items.forEach(item -> System.out.println(item));
+    }
+
+    //单条件自定义查询
+    @Test
+    void queryOne(){
+        //查询items中 title字段包含”游戏”分词的数据
+        Iterable<Item> items = itemRespository.queryItemsByTitleMatches("游戏");
+        items.forEach(item -> System.out.println(item));
+    }
+
+    //多条件自定义查询
+    @Test
+    void queryTwo(){
+        List<Item> items = itemRespository.queryItemsByTitleMatchesAndBrandMatches("游戏", "罗技");
+        items.forEach(item -> System.out.println(item));
+    }
 
 }
