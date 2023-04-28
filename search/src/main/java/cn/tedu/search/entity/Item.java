@@ -13,10 +13,11 @@ import java.io.Serializable;
 import java.lang.annotation.Documented;
 
 @Data
+//相当于生成了set方法 返回值都是Item return的都是this
 @Accessors(chain = true)    //支持链式赋值
 @AllArgsConstructor         //生成包含全部参数的构造方法
 @NoArgsConstructor          //生成无参的构造方法
-@Document(indexName = "item")
+@Document(indexName = "items")
 public class Item implements Serializable {
     @Id
     private Long id;
