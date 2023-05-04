@@ -4,17 +4,22 @@ import cn.tedu.csmall.commons.exception.CoolSharkServiceException;
 import cn.tedu.csmall.commons.pojo.order.dto.OrderAddDTO;
 import cn.tedu.csmall.commons.pojo.order.entity.Order;
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
+import cn.tedu.csmall.commons.restful.JsonPage;
 import cn.tedu.csmall.commons.restful.ResponseCode;
 import cn.tedu.csmall.order.service.IOrderService;
 import cn.tedu.csmall.order.webapi.mapper.OrderMapper;
 import cn.tedu.csmall.stock.service.IStockService;
 import cn.tedu.csmallcartservice.ICartService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @DubboService
 @Service
@@ -59,5 +64,22 @@ public class OrderServiceImpl implements IOrderService {
         //执行新增
         orderMapper.insertOrder(order);
         log.info("新增订单信息为:{}",order);
+    }
+
+    //参数page是页码，pageSize是每页条数
+    public JsonPage<Order> getAllOrdersByPage(Integer pageNum, Integer pageSize){
+        //PageHelper框架实现分页的方法，就是在执行查询之前，设置分页条件
+        //使用PageHelper.startPage方法设置本次查询要查询的页码和每页条数
+        //PageHelper的页码从1开始，也就是page是1，就查询第一页
+        PageHelper.startPage(pageNum,pageSize);
+
+        //上面的分页条件设置完毕后，下面进行查询，就会在sql语句后自动添加limit关键字
+        List<Order> list = orderMapper.findAllOrders();
+
+        //上面的list就是要查询当页数据，但是不包含分页信息（总页数，总条数，有没有上一页等）
+        //所以作为分页工具，必须返回包含这个分页信息的对象，也就是声明的返回值PageInfo
+        //当前方法返回时，直接实例化PageInfo对象，构造方法中会自动计算分页的信息
+        //同时传入list作为参数，将list中的数据赋值给PageInfo
+        return JsonPage.restPage(new PageInfo<>(list));
     }
 }

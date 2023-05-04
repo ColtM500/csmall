@@ -1,16 +1,23 @@
 package cn.tedu.csmall.order.webapi.controller;
 
 import cn.tedu.csmall.commons.pojo.order.dto.OrderAddDTO;
+import cn.tedu.csmall.commons.pojo.order.entity.Order;
 import cn.tedu.csmall.commons.pojo.stock.dto.StockReduceCountDTO;
+import cn.tedu.csmall.commons.restful.JsonPage;
 import cn.tedu.csmall.commons.restful.JsonResult;
 import cn.tedu.csmall.commons.restful.ResponseCode;
 import cn.tedu.csmall.order.service.IOrderService;
+import cn.tedu.csmall.order.webapi.service.impl.OrderServiceImpl;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +30,9 @@ public class OrderController {
 
     @Autowired
     private IOrderService orderService;
+
+    @Autowired
+    private OrderServiceImpl orderServiceimpl;
 
     @PostMapping("/add")
     @ApiOperation("新增订单")
@@ -48,5 +58,18 @@ public class OrderController {
                 ResponseCode.INTERNAL_SERVER_ERROR,
             "方法运行发生异常，执行了降级方法: " + throwable.getMessage()
         );
+    }
+
+    @GetMapping("/page")
+    @ApiOperation("分页查询所有订单")
+    @ApiImplicitParams({
+        @ApiImplicitParam(value = "页码",name = "page", example = "1"),
+            @ApiImplicitParam(value = "每页条数", name = "pageSize", example = "10")
+    })
+    public JsonResult<JsonPage<Order>> pageOrder(Integer pageNum, Integer pageSize){
+        JsonPage<Order> jsonPage = orderService.getAllOrdersByPage(
+            pageNum,pageSize
+        );
+        return JsonResult.ok("查询完成", jsonPage);
     }
 }

@@ -39,6 +39,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--
+       将PageHelper框架分页查询结果对象PageInfo转换为JsonPage
+       我们需要在commons模块中添加能够使用PageInfo的依赖
+       -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
