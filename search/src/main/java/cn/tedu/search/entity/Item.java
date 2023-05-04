@@ -14,14 +14,20 @@ import java.lang.annotation.Documented;
 
 @Data
 //相当于生成了set方法 返回值都是Item return的都是this
-@Accessors(chain = true)    //支持链式赋值
+@Accessors(chain = true)    //支持链式set赋值
 @AllArgsConstructor         //生成包含全部参数的构造方法
 @NoArgsConstructor          //生成无参的构造方法
+//@Document是SpringDataElasticsearch框架标记一个对应的ES实体类的注解
+//indexName属性指定当前实体类对应索引的名称，运行时如果索引不存在，会自动创建这个索引
 @Document(indexName = "items")
 public class Item implements Serializable {
+
+    //Spring Data通过@Id注解标记实体类的主键
     @Id
     private Long id;
 
+    //title是要进行分词的字段
+    //@Field标记Es中的一个字段
     @Field(type = FieldType.Text,
             analyzer = "ik_max_word",
             searchAnalyzer = "ik_max_word")
