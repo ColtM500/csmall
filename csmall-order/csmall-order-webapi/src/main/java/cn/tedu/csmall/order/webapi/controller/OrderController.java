@@ -32,7 +32,6 @@ public class OrderController {
     @Autowired
     private IOrderService orderService;
 
-
     @PostMapping("/add")
     @ApiOperation("新增订单")
     @SentinelResource(value = "新增订单的方法",
