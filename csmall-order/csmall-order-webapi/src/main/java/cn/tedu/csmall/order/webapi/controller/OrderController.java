@@ -28,11 +28,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class OrderController {
 
+    //解耦：降低关联性，方便维护
     @Autowired
     private IOrderService orderService;
 
-    @Autowired
-    private OrderServiceImpl orderServiceimpl;
 
     @PostMapping("/add")
     @ApiOperation("新增订单")
